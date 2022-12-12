@@ -12,10 +12,10 @@ function nombre(){
     alert("bienvenido " + ingreso_nombre + " a Fast Ice Cream" );
     return ingreso_nombre;
 }
-
+let costo_helado = 100;
 function compra(){
     let quiere_comprar = prompt(nombre_usuario + " quieres comprar un helado?");
-    while(quiere_comprar != "si"  && quiere_comprar != "no"  ){
+    while(quiere_comprar != "si" && quiere_comprar != "no" ){
         quiere_comprar = prompt(nombre_usuario + " debe ingresar si o no");
     }
     if(quiere_comprar =="si"){
@@ -25,11 +25,16 @@ function compra(){
             while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
                 sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son chocolate, frutilla, dulce de leche, naranja, vainilla ");
             }
+            
+            cantidad_helados = Number(prompt("cada helado cuesta:" + costo_helado + " cuantos quiere?"))
+
+
+
 
             
             confirma_compra = "si";  
         } 
-        alert("compro un helado de " + sabor);
+        alert("compro " + cantidad_helados + " helado de " + sabor + "a un costo de "+ costo_helado) ;
     }else{
         alert("agradesemos tu visita " )
     }
