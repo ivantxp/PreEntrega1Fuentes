@@ -7,34 +7,42 @@ function control_ingreso(texto_1er_prompt, cantidad_caracteres, texto_error){
     return primer_prompt;
 }
 
+function Valor_si_no(pregunta){
+    let si_no = prompt(nombre_usuario + pregunta);
+    while(si_no != "si" && si_no  != "no" ){
+        si_no = prompt(nombre_usuario + " debe ingresar si o no para saber");
+    }
+    return si_no
+}
+
 function nombre(){
     let ingreso_nombre = control_ingreso( "hola como te llamas", 10, "debe ingresar un nombre que no supere los ");
     alert("bienvenido " + ingreso_nombre + " a Fast Ice Cream" );
     return ingreso_nombre;
 }
+
 let costo_helado = 100;
 function compra(){
-    let quiere_comprar = prompt(nombre_usuario + " quieres comprar un helado?");
+/*     let quiere_comprar = prompt(nombre_usuario + " quieres comprar un helado?");
     while(quiere_comprar != "si" && quiere_comprar != "no" ){
         quiere_comprar = prompt(nombre_usuario + " debe ingresar si o no");
-    }
-    if(quiere_comprar =="si"){
-        let confirma_compra = "no"
-        let sabor = prompt( "los sabores que teneos son: chocolate, frutilla, dulce de leche, naranja, vainilla");
-        while(confirma_compra != "si"){
+    } */
+    
+    if(Valor_si_no(" quieres comprar un helado?") =="si"){
+/*         let confirma_compra = "no"; */  
+    let cantidad_helados = 0;
+        let sabor = prompt( "los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
+        do{
             while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
-                sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son chocolate, frutilla, dulce de leche, naranja, vainilla ");
+                sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
             }
-            
-            cantidad_helados = Number(prompt("cada helado cuesta:" + costo_helado + " cuantos quiere?"))
-
-
-
-
-            
-            confirma_compra = "si";  
-        } 
-        alert("compro " + cantidad_helados + " helado de " + sabor + "a un costo de "+ costo_helado) ;
+            cantidad_helados = Number(prompt("cada helado de " + sabor + " cuesta:" + costo_helado + " cuantos quiere?"))
+        /*     while(quiere_comprar != "si" && quiere_comprar != "no" ){
+                quiere_comprar = prompt(nombre_usuario + " debe ingresar si o no");
+            } */
+            alert("compro " + cantidad_helados + " helado de " + sabor + "a un costo de "+ costo_helado) ;
+        }while( Valor_si_no("Quiere confirmar su compra") == "no")
+        alert( "el valor de su compra es " + cantidad_helados * costo_helado )
     }else{
         alert("agradesemos tu visita " )
     }
