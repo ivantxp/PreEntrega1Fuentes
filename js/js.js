@@ -21,7 +21,7 @@ function nombre(){
     return ingreso_nombre;
 }
 
-let costo_helado = 100;
+let costo_helado = 0;
 function compra(){
     if(Valor_si_no(" quieres comprar un helado?") =="si"){
         let cantidad_helados = 0;
@@ -29,14 +29,36 @@ function compra(){
         let sumar_pedido = "";
         do{
             do{
+                alert("1")
                 while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
                     sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
                 }
+                alert("2")
+                switch(sabor){
+                    case "chocolate":
+                        costo_helado = 200;
+                        break;
+                    case "frutilla":
+                        costo_helado = 100;
+                        break;
+                    case "dulce de leche":
+                        costo_helado = 250;
+                        break;
+                    case naranja:
+                        costo_helado = 100;
+                        break;
+                    case "naranja":
+                        costo_helado = 150;
+                        break;
+                    default:
+                }
+                alert("3")
                 cantidad_helados = Number(prompt("cada helado de " + sabor + " cuesta:" + costo_helado + " cuantos quiere?"))
-                let pedido = cantidad_helados + " helado de " + sabor + "a un costo de "+ costo_helado;
+                let pedido = cantidad_helados + " helado de " + sabor + "a un costo de "+ costo_helado + " $";
                 sumar_pedido = sumar_pedido + pedido;
                 alert("compro : \n" + "*" + sumar_pedido);
-            }while (Valor_si_no(" quieres comprar mas helado de otro sabor?") =="no")
+            }while (Valor_si_no(" quieres comprar mas helado de otro sabor?") == "si")
+            alert("4")
         }while( Valor_si_no(" quieres confirmar su compra") == "no")
         alert( "el valor de su compra es " + cantidad_helados * costo_helado )
     }else{
