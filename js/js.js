@@ -33,9 +33,9 @@ function compra(){
                 while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
                     sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
                 }
-                alert("2")
+                alert("2")   
                 switch(sabor){
-                    case "chocolate":
+                    case "chocolate":   
                         costo_helado = 200;
                         break;
                     case "frutilla":
@@ -52,6 +52,7 @@ function compra(){
                         break;
                     default:
                 }
+                
                 alert("3")
                 cantidad_helados = Number(prompt("cada helado de " + sabor + " cuesta:" + costo_helado + " cuantos quiere?"))
                 let pedido = cantidad_helados + " helado de " + sabor + "a un costo de "+ costo_helado + " $";
