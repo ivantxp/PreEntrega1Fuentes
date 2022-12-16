@@ -25,9 +25,10 @@ let costo_helado = 0;
 function compra(){
     if(Valor_si_no(" quieres comprar un helado?") =="si"){
         let cantidad_helados = 0;
-        let sabor = prompt( "los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla. \n escribe el sabor que queires ");
-        let sumar_pedido = "";
-        do{
+        let sabor = ""
+/*         let sumar_pedido = "";
+ */        do{
+                sabor = prompt( "los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla. \n escribe el sabor que queires ");
                 while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
                     sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
                 }
@@ -39,7 +40,7 @@ function compra(){
                     case "frutilla":
                         costo_helado = 100;
                         break;
-                    case "dulce de leche":
+                    case "dulce  de leche":
                         costo_helado = 250;
                         break;
                     case "naranja":
