@@ -9,7 +9,7 @@ function control_ingreso(texto_1er_prompt, cantidad_caracteres, texto_error){
 
 function Valor_si_no(pregunta){
     let si_no = prompt(nombre_usuario + pregunta);
-    while(si_no != "si" && si_no  != "no" ){
+    while(si_no.toLocaleLowerCase()  != "si" && si_no.toLocaleLowerCase()  != "no" && si_no != null){
         si_no = prompt(nombre_usuario + " debe ingresar si o no para saber");
     }
     return si_no
@@ -32,7 +32,7 @@ function compra(){
                 alert("A continuacion re aremos tu camino de compra")   
             }
             sabor = prompt( "Los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla. \n escribe el sabor que queires ");
-            while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
+            while ( sabor != null && sabor.toLocaleLowerCase()!= "chocolate" && sabor.toLocaleLowerCase() != "frutilla" && sabor.toLocaleLowerCase() != "dulce de leche" && sabor.toLocaleLowerCase() != "naranja" && sabor.toLocaleLowerCase() != "vainilla" ){
                 sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
             }
             switch(sabor){
