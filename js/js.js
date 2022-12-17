@@ -26,37 +26,36 @@ function compra(){
     if(Valor_si_no(" quieres comprar un helado?") =="si"){
         let cantidad_helados = 0;
         let sabor = ""
-/*         let sumar_pedido = "";
- */        do{
-                sabor = prompt( "los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla. \n escribe el sabor que queires ");
-                while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
-                    sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
-                }
-
-                switch(sabor){
-                    case "chocolate":   
-                        costo_helado = 200;
-                        break;
-                    case "frutilla":
-                        costo_helado = 100;
-                        break;
-                    case "dulce  de leche":
-                        costo_helado = 250;
-                        break;
-                    case "naranja":
-                        costo_helado = 150;
-                        break;
-                    case "vainilla":
-                        costo_helado = 112;
-                        break;
-            }  
-                
-                cantidad_helados = Number(prompt("cada helado de " + sabor + " cuesta: " + costo_helado + "$ cuantos quiere?"))
-                /* let costo = cantidad_helados * costo_helado
-
-                alert("compro : \n" + "*" + sumar_pedido); */
-        }while( Valor_si_no( "el valor de su compra es " + cantidad_helados * costo_helado + "$ quiere confirmarla") == "no")
-        alert( "Muchas gracias por su compra" )
+        let primera_pasada = false
+        do{
+            if (primera_pasada ==true){
+                alert("A continuacion re aremos tu camino de compra")   
+            }
+            sabor = prompt( "Los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla. \n escribe el sabor que queires ");
+            while (sabor != "chocolate" && sabor != "frutilla" && sabor != "dulce de leche" && sabor != "naranja" && sabor != "vainilla" ){
+                sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
+            }
+            switch(sabor){
+                case "chocolate":   
+                    costo_helado = 200;
+                    break;
+                case "frutilla":
+                    costo_helado = 100;
+                    break;
+                case "dulce  de leche":
+                    costo_helado = 250;
+                    break;
+                case "naranja":
+                    costo_helado = 150;
+                    break;
+                case "vainilla":
+                    costo_helado = 112;
+                    break;
+            }                 
+            cantidad_helados = Number(prompt("cada helado de " + sabor + " cuesta: " + costo_helado + "$ cuantos quiere?"))
+            primera_pasada = true
+        }while( Valor_si_no( "El valor de su compra es " + cantidad_helados * costo_helado + "$. Quiere confirmar su compra") == "no")
+        alert( "Muchas gracias "+ nombre_usuario +"por su compra" )
     }else{
         alert("agradesemos tu visita " )
     }
@@ -65,17 +64,3 @@ function compra(){
 let nombre_usuario = nombre() 
 
 compra()
-/* function nombre(){
-    let ingreso_nombre = prompt(" hola, como te llamas?")
-    while ( ingreso_nombre == "" || ingreso_nombre.length > 10 ){
-        ingreso_nombre = prompt("debe ingresar un nombre que no supere los 10 caracteres")
-    }
-    alert("bienvenido " + ingreso_nombre + " a Fast Ice Cream" )
-}
-    
-nombre() */
-
-
-/* 
-
-compra() */
