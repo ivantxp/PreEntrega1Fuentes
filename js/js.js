@@ -7,12 +7,15 @@ function control_ingreso(texto_1er_prompt, cantidad_caracteres, texto_error){
     return primer_prompt;
 }
 
-function Valor_si_no(pregunta){
-    let si_no = prompt(nombre_usuario + pregunta);
-    while(si_no.toLocaleLowerCase()  != "si" && si_no.toLocaleLowerCase()  != "no" && si_no != null){
-        si_no = prompt(nombre_usuario + " debe ingresar si o no para saber");
+function valor_si_no(pregunta){
+    let si_no = prompt(pregunta).toLowerCase();
+    console.log(si_no)
+    while(si_no  != "si" && si_no != "no" && si_no != null){
+        si_no = prompt("Debe ingresar si o no para saber");
+        console.log(si_no);
     }
-    return si_no
+    console.log(si_no);
+    return si_no;
 }
 
 function nombre(){
@@ -20,44 +23,59 @@ function nombre(){
     alert("bienvenido " + ingreso_nombre + " a Fast Ice Cream" );
     return ingreso_nombre;
 }
-
 let costo_helado = 0;
 function compra(){
-    if(Valor_si_no(" quieres comprar un helado?") =="si"){
+    if(valor_si_no(" quieres comprar un helado?") =="si"){
         let cantidad_helados = 0;
-        let sabor = ""
-        let primera_pasada = false
+        let sabor = "";
+        let primera_pasada = false;
+        let pedido = "";
+        let precio = 0;
         do{
-            if (primera_pasada ==true){
-                alert("A continuacion re aremos tu camino de compra")   
-            }
-            sabor = prompt( "Los sabores que teneos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla. \n escribe el sabor que queires ");
-            while ( sabor != null && sabor.toLocaleLowerCase()!= "chocolate" && sabor.toLocaleLowerCase() != "frutilla" && sabor.toLocaleLowerCase() != "dulce de leche" && sabor.toLocaleLowerCase() != "naranja" && sabor.toLocaleLowerCase() != "vainilla" ){
-                sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate, \n-frutilla, \n-dulce de leche, \n-naranja, \n-vainilla");
-            }
-            switch(sabor){
-                case "chocolate":   
-                    costo_helado = 200;
-                    break;
-                case "frutilla":
-                    costo_helado = 100;
-                    break;
-                case "dulce  de leche":
-                    costo_helado = 250;
-                    break;
-                case "naranja":
-                    costo_helado = 150;
-                    break;
-                case "vainilla":
-                    costo_helado = 112;
-                    break;
-            }                 
-            cantidad_helados = Number(prompt("cada helado de " + sabor + " cuesta: " + costo_helado + "$ cuantos quiere?"))
-            primera_pasada = true
-        }while( Valor_si_no( "El valor de su compra es " + cantidad_helados * costo_helado + "$. Quiere confirmar su compra") == "no")
-        alert( "Muchas gracias "+ nombre_usuario +"por su compra" )
+            do{
+                if (primera_pasada ==true){
+                    alert("A continuacion re aremos tu camino de compra");
+                    /*reseteo de variables*/
+                    cantidad_helados = 0;
+                    sabor = "";
+                    primera_pasada = false;
+                    pedido = ""; 
+                    let precio = "0"; 
+                }
+                sabor = prompt( "Los sabores que teneos son:\n -chocolate \n-frutilla \n-dulce de leche \n-naranja, \n-vainilla \nEscribe el sabor que queires ").toLowerCase();
+                while (sabor != null && sabor.toLowerCase()!= "chocolate" && sabor.toLowerCase() != "frutilla" && sabor.toLowerCase() != "dulce de leche" && sabor.toLocaleLowerCase() != "naranja" && sabor.toLocaleLowerCase() != "vainilla"){
+                    sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate \n-frutilla \n-dulce de leche \n-naranja \n-vainilla").toLowerCase();
+                }
+                /* debugger */
+                switch(sabor){
+                    case "chocolate":  
+                        costo_helado = 200;
+                        break;
+                    case "frutilla":
+                        costo_helado = 300;
+                        break;
+                    case "dulce de leche":
+                        costo_helado = 250;
+                        break;
+                    case "naranja":
+                        costo_helado = 150;
+                        break;
+                    case "vainilla":
+                        costo_helado = 100;
+                        break;
+                }       
+                cantidad_helados = Number(prompt("22cada helado de " + sabor + " cuesta: " + costo_helado + "$ cuantos quiere?"));    
+                while( cantidad_helados <= 0  || isNaN(cantidad_helados) ){ 
+                    cantidad_helados = Number(prompt("debe ingresar un numero mayor a 0"));     
+                }    
+                pedido = pedido + "\n" + cantidad_helados + " helados de " + sabor + "estos tendran un costo de " + cantidad_helados * costo_helado + "$";
+                precio = precio + (cantidad_helados * costo_helado);
+            }while( valor_si_no("A elejido "+ pedido + "\n Quiere arrejar mas sabores a la compra") == "si");
+            primera_pasada = true;
+        }while( valor_si_no( "Va a comprar:\n" + pedido +"\n El total de la compra sera: " + precio + "$.\nQuiere confirmar su compra") == "no");
+        alert( "Muchas gracias "+ nombre_usuario +" por su compra" );
     }else{
-        alert("agradesemos tu visita " )
+        alert("agradesemos tu visita" );
     }
 }
 
