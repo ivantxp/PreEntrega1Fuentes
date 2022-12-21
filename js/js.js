@@ -25,7 +25,7 @@ function nombre(){
 }
 
 function compra(){
-    if(valor_si_no("uieres comprar un helado?") =="si"){
+    if(valor_si_no("Quieres comprar un helado?") =="si"){
         let cantidad_helados = 0;
         let sabor = "";
         let primera_pasada = false;
@@ -35,7 +35,7 @@ function compra(){
         do{
             do{
                 if (primera_pasada ==true){
-                    alert("A continuacion re aremos tu camino de compra");
+                    alert("A continuacion re aremos la compra");
                     /*reseteo de variables*/
                     cantidad_helados = 0;
                     sabor = "";
@@ -43,9 +43,9 @@ function compra(){
                     pedido = ""; 
                     let precio = "0"; 
                 }
-                sabor = prompt( "Los sabores que teneos son:\n -Chocolate -- 200$\n-Frutilla -- 300$ \n-Dulce de leche -- 250$\n-Naranja -- 150$ \n-Vainilla -- 100$\nEscribe el sabor que queires ").toLowerCase();
+                sabor = prompt( "Los sabores que teneos son:\n-Chocolate -- 200$\n-Frutilla -- 300$ \n-Dulce de leche -- 250$\n-Naranja -- 150$ \n-Vainilla -- 100$\n\nEscribe el sabor que quieres ").toLowerCase();
                 while (sabor != null && sabor.toLowerCase()!= "chocolate" && sabor.toLowerCase() != "frutilla" && sabor.toLowerCase() != "dulce de leche" && sabor.toLocaleLowerCase() != "naranja" && sabor.toLocaleLowerCase() != "vainilla"){
-                    sabor = prompt ("no contamos con el sabor ingresado, lo que tenemos son:\n -chocolate \n-frutilla \n-dulce de leche \n-naranja \n-vainilla").toLowerCase();
+                    sabor = prompt ("No contamos con el sabor ingresado, lo que tenemos son:\n -chocolate \n-frutilla \n-dulce de leche \n-naranja \n-vainilla").toLowerCase();
                 }
                 /* debugger */
                 switch(sabor){
@@ -69,11 +69,11 @@ function compra(){
                 while( cantidad_helados <= 0  || isNaN(cantidad_helados) ){ 
                     cantidad_helados = Number(prompt("Debe ingresar un numero mayor a 0"));     
                 }    
-                pedido = pedido + "\n" + cantidad_helados + " helados de " + sabor + "estos tendran un costo de " + cantidad_helados * costo_helado + "$";
+                pedido = pedido + "\n" + cantidad_helados + " helados de " + sabor + " estos tendran un costo de " + cantidad_helados * costo_helado + "$";
                 precio = precio + (cantidad_helados * costo_helado);
-            }while( valor_si_no("A elejido "+ pedido + "\n Quieres arregar mas sabores a la compra") == "si");
+            }while( valor_si_no("A elejido:"+ pedido + "\n\nQuieres arregar mas sabores a la compra?") == "si");
             primera_pasada = true;
-        }while( valor_si_no( "Va a comprar:\n" + pedido +"\nEl total de la compra sera: " + precio + "$.\nQuiere confirmar su compra") == "no");
+        }while( valor_si_no( "Va a comprar:\n" + pedido +"\nEl total de la compra sera: " + precio + "$.\n\nQuiere confirmar su compra") == "no");
         alert( "Muchas gracias "+ nombre_usuario +" por su compra" );
     }else{
         alert("Agradesemos tu visita" );
