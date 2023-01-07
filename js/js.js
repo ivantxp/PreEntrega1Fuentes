@@ -195,13 +195,13 @@ function comprar(){
     if(valor_si_no("Quieres comprar un helado?") =="si"){
         let tipo
         do{
-             tipo = Number(prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") );
+            tipo = Number(prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") );
             alert(tipo)
             alert(formato.some((el) => {el.id == tipo }))
 
         }while(formato.some((el) => {el.id != tipo }) )   
 
-
+        alert(tipo)
         comprados.push({id:tipo})
         alert(comprados);
         }
