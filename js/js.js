@@ -43,7 +43,7 @@ let helados = [
     descripcion:"Helado de chocolate clasico elaborado con  lps mejores cacaos sudamericanos",
     },
     {id:9,
-    categoria: "chocolate",
+    categoria: "chocolates",
     sabor: "chocolate almendrado",
     descripcion:"helado de chocolate sembrado con almendras suavemente tostadas",
     },
@@ -202,26 +202,26 @@ let comprados= [];
 
 
 let categoria_selecionada
-let a =[]
-helados.forEach((el)=> a.push(el.categoria))
 
-console.log(a)
-/*
+ function categorias(){
+    let a =[]
+    let  b= []
+    helados.forEach((el)=> a.push(el.categoria))
+    /* let retorno = [new Set(a)]
+    return retorno   */ 
+    for(let i = 0; i< a.length;i++){
+        if(b.includes(a[i])==false){
+            b.push(a[i])
+        }
+    }
+    return b
+} 
+alert(categorias())
 
-2. Pedir al usuario un nombre de una película y en caso de que se encuentre en el 
-array movies mostrar por pantalla la cantidad de votos que tiene.
-
-const busqueda = prompt("ingrese nombre pelicula")
-let buscado = movies.find((el) => el.title.toLocaleLowerCase() ==  busqueda.toLocaleLowerCase())
 
 
-if(buscado == undefined){
-    alert("pelicula no existe")
-}else{
-    alert(buscado.vote_average)
-}
-*/
 
+alert(categorias())
 // array compra debe tener------sabor ---preccio ---- cantidad-----sub total
 function comprar(){
     if(valor_si_no("Quieres comprar un helado?") =="si"){
@@ -231,7 +231,7 @@ function comprar(){
             let tipo = 0
             let cantidad
 
-            categoria_selecionada = prompt("las categorias de healdos que tenemos son: \n1) Cremas. \n2) chocolates. \n3) dulce de leches \n4) Frutas al agua. \n5) Frutas a la Cremas. \n6) Sambayones.\n Escriba el numero de la opcion que quiera" )
+            categoria_selecionada = prompt("las categorias de healdos que tenemos son: " + categorias() + " Escriba el numero de la opcion que quiera" )
             let filtro = helados.filter((el)=>el.categoria === categoria_selecionada)
             let indece = 1
             sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtro.map((el)=>{
