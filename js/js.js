@@ -178,15 +178,15 @@ function valor_si_no(pregunta){
     }
     return si_no;
 }
-
-function control_numero(pregunta){
-    let numero = Number(prompt(pregunta));
-    while(isNaN(numero)  && numero != null){
-        si_no = prompt("Debe ingresar un nuemero de la lista");
-        console.log(numero);
-    }
-    return numero;
+function control_numerico(pregunta, array){
+    let numero
+    let a 
+    do{
+        numero = parseInt(prompt(pregunta))
+    }while( array.some((el)=> el.id == numero) == false)
+    return numero
 }
+
 function nombre(){
     let ingreso_nombre = control_ingreso( "Hola como te llamas", 10, "debe ingresar un nombre que no supere los ");
     alert("Bienvenido " + ingreso_nombre + " a Fast Ice Cream" );
@@ -199,11 +199,9 @@ let formato = [
     {id: 4 ,tipo: "resipiente termico de 2k",precio: 700},
 ]
 let comprados= [];
-
-
 let categoria_selecionada
 
- function categorias(){
+function categorias(){
     let a =[]
     let  b= []
     helados.forEach((el)=> a.push(el.categoria))
@@ -216,12 +214,7 @@ let categoria_selecionada
     }
     return b
 } 
-alert(categorias())
 
-
-
-
-alert(categorias())
 // array compra debe tener------sabor ---preccio ---- cantidad-----sub total
 function comprar(){
     if(valor_si_no("Quieres comprar un helado?") =="si"){
@@ -231,11 +224,23 @@ function comprar(){
             let tipo = 0
             let cantidad
 
-            categoria_selecionada = prompt("las categorias de healdos que tenemos son: " + categorias() + " Escriba el numero de la opcion que quiera" )
-            let filtro = helados.filter((el)=>el.categoria === categoria_selecionada)
+            let categoria_pregunta = []
+            for(let i =0; i< categorias().length;i++){
+                categoria_pregunta.push({id:i+1,categoria: categorias()[i]})
+            }
+            categoria_selecionada =  control_numerico("las categorias de healdos que tenemos son: \n" + categoria_pregunta.map((el)=>{return el.id + ")" + el.categoria}).join("\n") + "\ndige el numero de cual quiere?", categoria_pregunta)
+            
+            
+            let filtros = helados.filter((el)=>el.categoria === categoria_pregunta[categoria_selecionada].categoria)
+
+
+            
+
+
+
+            sabor = control_numerico("los sabores que tenemos con esa categoria son: \n")
             let indece = 1
-            sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtro.map((el)=>{
-                return indece++  + ")" +el.sabor}).join("\n") + "\n-dige el numero de cual quiere?")    )
+            sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtros.map((el)=>{return indece++  + ")" +el.sabor}).join("\n") + "\n-dige el numero de cual quiere?")    )
             tipo = prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") ;
             cantidad = Number(prompt("cuantos " + tipo + " quiere"))
             
