@@ -215,6 +215,7 @@ function categorias(){
     return b
 } 
 
+
 // array compra debe tener------sabor ---preccio ---- cantidad-----sub total
 function comprar(){
     if(valor_si_no("Quieres comprar un helado?") =="si"){
@@ -223,45 +224,42 @@ function comprar(){
             let sabor 
             let tipo = 0
             let cantidad
-
+            
             let categoria_pregunta = []
             for(let i =0; i< categorias().length;i++){
                 categoria_pregunta.push({id:i+1,categoria: categorias()[i]})
             }
-            categoria_selecionada =  control_numerico("las categorias de healdos que tenemos son: \n" + categoria_pregunta.map((el)=>{return el.id + ")" + el.categoria}).join("\n") + "\ndige el numero de cual quiere?", categoria_pregunta)
-            
-            let filtros = categoria_selecionada.map((el)=>{
-                return {
-                    id: el,
-                    sabor: el.sabor 
-                }
-            })
-            //let filtros = helados.filter((el)=>el.categoria === categoria_pregunta[categoria_selecionada].categoria)
-console.log(filtros)
+            categoria_selecionada =  control_numerico("las categorias de healdos que tenemos son: \n" + categoria_pregunta.map((el)=>{return el.id + ")"+el.sabor + el.descripcion}).join("\n") + "\ndige el numero de cual quiere?", categoria_pregunta)
+            console.log(categoria_selecionada)
 
-        
-            let indece = 1
-            sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtros.map((el)=>{return indece++  + ")" +el.sabor}).join("\n") + "\n-dige el numero de cual quiere?")    )
-            tipo = prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") ;
-            cantidad = Number(prompt("cuantos " + tipo + " quiere"))
             
-            comprados.push(
-                {sabor: sabor, precio: tipo, cantidad: cantidad, sub_total: tipo * cantidad
-                }
-            )   
-        }while( valor_si_no("quiere continuar coprado?") == "si");
+            let sabores_buscados = helados.filter((el =>el.categoria == categoria_pregunta[categoria_selecionada-1].categoria))
+            //alert(sabores_buscados.map((el)=> el.id+el.sabor).join("888888"))
+            //console.log(sabores_buscados)
+           /*  alert(sabores_buscados.map((el)=>{
+                return{ 
+                    id: el.id,
+                    sabor: el.sabor}}).join("\n")) */
+                    
+            sabor = prompt("los sabores que tenemos son: \n"+ sabores_buscados.forEach((el)=> id.el + ")" + el.sabor +  el.descripcion).join("\n") +"\n seleccione un helemento por su id")
+                
+            
+            //sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtros.map((el)=>{return indece++  + ")" +el.sabor}).join("\n") + "\n-dige el numero de cual quiere?")    )
+            //tipo = prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") ;
+            //cantidad = Number(prompt("cuantos " + tipo + " quiere"))
+            
+            //comprados.push({sabor: sabor, precio: tipo, cantidad: cantidad, sub_total: tipo * cantidad
+        }while( valor_si_no("quiere contSinuar coprado?") == "si");
 
         console.log(comprados)
         let total =  comprados.reduce((a,el)=> a + el.sub_total,0)
         alert(total)
         alert("en su carrito tiene:\n" + comprados.map((el)=>{return el.sabor + "precio " + el.precio + "x" + el.cantidad + " = " + el.sub_total}).join("\n") + "\ntotal = " + total)
-        if(valor_si_no("quiere modificar algun helemento del carrito" =="si")){
-
-        }
+        
     }else{
         alert("Agradesemos tu visita" );
     }
-    }
+}   
 let nombre_usuario = nombre()
 comprar()
 
