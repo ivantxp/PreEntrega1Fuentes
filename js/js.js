@@ -230,15 +230,16 @@ function comprar(){
             }
             categoria_selecionada =  control_numerico("las categorias de healdos que tenemos son: \n" + categoria_pregunta.map((el)=>{return el.id + ")" + el.categoria}).join("\n") + "\ndige el numero de cual quiere?", categoria_pregunta)
             
-            
-            let filtros = helados.filter((el)=>el.categoria === categoria_pregunta[categoria_selecionada].categoria)
+            let filtros = categoria_selecionada.map((el)=>{
+                return {
+                    id: el,
+                    sabor: el.sabor 
+                }
+            })
+            //let filtros = helados.filter((el)=>el.categoria === categoria_pregunta[categoria_selecionada].categoria)
+console.log(filtros)
 
-
-            
-
-
-
-            sabor = control_numerico("los sabores que tenemos con esa categoria son: \n")
+        
             let indece = 1
             sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtros.map((el)=>{return indece++  + ")" +el.sabor}).join("\n") + "\n-dige el numero de cual quiere?")    )
             tipo = prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") ;
