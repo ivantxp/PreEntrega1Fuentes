@@ -229,21 +229,22 @@ function comprar(){
             for(let i =0; i< categorias().length;i++){
                 categoria_pregunta.push({id:i+1,categoria: categorias()[i]})
             }
-            categoria_selecionada =  control_numerico("las categorias de healdos que tenemos son: \n" + categoria_pregunta.map((el)=>{return el.id + ")"+el.sabor + el.descripcion}).join("\n") + "\ndige el numero de cual quiere?", categoria_pregunta)
+            categoria_selecionada =  control_numerico("las categorias de healdos que tenemos son: \n" + categoria_pregunta.map((el)=>{return el.id + ")" + el.categoria}).join("\n") + "\ndige el numero de cual quiere?", categoria_pregunta)
             console.log(categoria_selecionada)
 
             
             let sabores_buscados = helados.filter((el =>el.categoria == categoria_pregunta[categoria_selecionada-1].categoria))
             //alert(sabores_buscados.map((el)=> el.id+el.sabor).join("888888"))
-            //console.log(sabores_buscados)
-           /*  alert(sabores_buscados.map((el)=>{
-                return{ 
-                    id: el.id,
-                    sabor: el.sabor}}).join("\n")) */
-                    
+            console.log(sabores_buscados)
+
             sabor = prompt("los sabores que tenemos son: \n"+ sabores_buscados.forEach((el)=> id.el + ")" + el.sabor +  el.descripcion).join("\n") +"\n seleccione un helemento por su id")
+/*             function buscado(){ for(let index = 0; index < sabores_buscados.length; index++) {
+                let a = sabores_buscados[index].id + sabores_buscados[index].sabor + sabores_buscados[index].descripcion
                 
-            
+            }}
+            sabor = prompt("los sabores que tenemos son: \n"+ buscado() +"\n seleccione un helemento por su id")
+
+             */
             //sabor = ( prompt("los sabores que tenemos con esa categoria son: \n"+  filtros.map((el)=>{return indece++  + ")" +el.sabor}).join("\n") + "\n-dige el numero de cual quiere?")    )
             //tipo = prompt( "Los formatos que puede elejir son: \n" + formato.map((el)=>{return el.id +  el.tipo + "-->" + el.precio }).join("\n")+"\nSeleccione una opcion") ;
             //cantidad = Number(prompt("cuantos " + tipo + " quiere"))
